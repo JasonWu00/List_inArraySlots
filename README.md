@@ -2,7 +2,6 @@
 ## Collaborative repository between Jason Wu and Kelvin Ng. 
 This repository is made for hw4D. 
 
-
 List_inArraySlots class
 1. Fields
     - a field that hold a reference to an array
@@ -10,3 +9,4 @@ List_inArraySlots class
     - .
 3. Methods
     - main method
+
