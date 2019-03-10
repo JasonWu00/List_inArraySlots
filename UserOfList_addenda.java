@@ -1,3 +1,4 @@
+/*
 Test methods newly-added to List_inArraySlots.
 
 Start by marking the end the code that has been tested.
@@ -5,6 +6,9 @@ I am reluctant to delete working code (since working
 code is rare in my life, and I might have further use
 for these tests. But I'd like make it easy to find new tests,
 for myself and other readers. I'd use a comment like...
+*/
+
+//Addenda file taken from skeletonsHolmes.
 
         // --------- end of "code that worked in v0" ---------
 
@@ -16,8 +20,8 @@ for myself and other readers. I'd use a comment like...
                               );
         }
 
--------------------------------------------
-     Local method and invocations of it to...
+//-------------------------------------------
+     //Local method and invocations of it to...
         // test set
         setTest(  8);
         setTest( 16);
@@ -37,8 +41,8 @@ for myself and other readers. I'd use a comment like...
      }
 
 
--------------------------------------------
-     Local method and invocations of it to...
+//-------------------------------------------
+     //Local method and invocations of it to...
 
         // test adding at a specified position
         addAtTest( 0, 29); // beginning of the list
@@ -73,7 +77,7 @@ for myself and other readers. I'd use a comment like...
 
 
 
--------------------------------------------
+//-------------------------------------------
         // test removing an element
         System.out.println("removing value " + list.remove( 6)
                           + ", leaving " + list.size() + " elements:");

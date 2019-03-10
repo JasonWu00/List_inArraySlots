@@ -1,6 +1,6 @@
-Augment List_inArraySlots by adding each of these methods.
-Develop incrementally, of course.
-
+//Augment List_inArraySlots by adding each of these methods.
+//Develop incrementally, of course.
+//Addenda file taken from skeletonsHolmes.
     /**
       accessor
       @return element @index from this list

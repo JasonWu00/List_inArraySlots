@@ -1,42 +1,32 @@
 /**
   Implement a list of integer elements, including
   both data and operations.
+
+  Version 0 code from solutionsHolmes.
+  Version 1 code from Addenda file from skeletonsHolmes.
  */
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class List_inArraySlots {
 
-    // declare fields here
-    List<Integer> arrayList;
-    int occupiedSpace = 0;
+    private int[] elements;     // container for the elements of the list
+    private int filledElements; // the number of elements in this list
+
+    private static final int INITIAL_CAPACITY = 10;
 
     /**
       Construct an empty list with a small initial capacity.
      */
     public List_inArraySlots() {
-      arrayList = new ArrayList<Integer>(10);
+        elements = new int[ INITIAL_CAPACITY];
+        // filledElements has been initialized to the desired value, 0
     }
 
-    public static void test() {
-      List<Integer> test1 = new ArrayList<Integer>(2);
-      test1.add(1);
-      test1.add(2);
-      System.out.println(test1);
-      System.out.println("Expecting the number 1");
-    }
 
     /**
       @return the number of elements in this list
      */
     public int size() {
-      occupiedSpace = 0;
-      for(int ticker = 0; ticker < arrayList.size(); ticker++) {
-        if (arrayList.get(ticker) != null)
-          occupiedSpace += 1;
-      }
-      return occupiedSpace;
+        return filledElements;
     }
 
 
@@ -44,15 +34,11 @@ public class List_inArraySlots {
        @return a string representation of this list,
        in [a,b,c,] format
       */
-
     public String toString() {
-      String output = "[";
-      for(int ticker = 0; ticker < arrayList.size(); ticker++) {
-        if (arrayList.size() == 0)
-          output = "This list is empty.";
-        output += arrayList.get(ticker) + ",";
-      }
-      return output + "]";
+        String result = "[";
+        for( int elemIndex = 0; elemIndex < filledElements; elemIndex++)
+            result += elements[ elemIndex] + ",";
+        return result + "]";
     }
 
 
@@ -62,28 +48,78 @@ public class List_inArraySlots {
       @return true, in keeping with conventions yet to be discussed
      */
      public boolean add( int value) {
-       arrayList.add(value);
-       return true;
-    }
+         // expand if necessary
+         if( filledElements == elements.length) expand();
+
+         elements[ filledElements] = value;
+         filledElements++;
+         // idiomatic version: elements[ filledElements++] = value;
+        return true;
+}
 
 
     /**
       Double the capacity of the List_inArraySlots,
-      preserving existing data
+      preserving existing data.
      */
      private void expand() {
         System.out.println( "expand... (for debugging)");
-        List<Integer> anotherList = new ArrayList<Integer>(2 * arrayList.size());
-
-        for(int ticker = 0; ticker < arrayList.size(); ticker++){
-          anotherList.add(arrayList.get(ticker));
-        }
-        arrayList = anotherList;
            /* S.O.P. rules for debugging:
               Working methods should be silent. But during
               development, the programmer must verify that
               this method is called when that is appropriate.
               So test using the println(), then comment it out.
               */
+        int[] bigger = new int[ elements.length * 2];
+        for( int elemIndex = 0; elemIndex < filledElements; elemIndex++)
+            bigger[ elemIndex] = elements[ elemIndex];
+        elements = bigger;
      }
+
+     /**
+       accessor
+       @return element @index from this list
+       precondition: @index is within the bounds of the array.
+           (Having warned the user about this precondition,
+            you should NOT complicate your code to check
+            whether user violated the condition.)
+      */
+     public int get( int index ) {
+       return -1;
+     }
+
+
+     /**
+       Set value at @index to @newValue
+
+       @return old value at @index
+       @precondition: @index is within the bounds of this list.
+      */
+     public int set( int index, int newValue ) {
+       return -1;
+     }
+
+
+     /**
+       Insert @value at position @index in this list.
+
+       Shift the element currently at that position (if any)
+       and any subsequent elements to the right
+       (that is, increase the index associated with each).
+      */
+      public void add( int index, int value) {
+      }
+
+
+     /**
+       Remove the element at position @index in this list.
+
+       Shift any subsequent elements to the left (that is,
+       decrease the index associated with each).
+
+       @return the value that was removed from the list
+      */
+      public int remove( int index) {
+        return -1;
+      }
 }
