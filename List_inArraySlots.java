@@ -41,6 +41,10 @@ public class List_inArraySlots {
         return result + "]";
     }
 
+    public int returnElement(int index) {
+      return elements[index];
+    }
+
 
     /**
       Appends @value to the end of this list.
@@ -85,7 +89,7 @@ public class List_inArraySlots {
             whether user violated the condition.)
       */
      public int get( int index ) {
-       return -1;
+       return elements[index];
      }
 
 
@@ -96,6 +100,7 @@ public class List_inArraySlots {
        @precondition: @index is within the bounds of this list.
       */
      public int set( int index, int newValue ) {
+       elements[index] = newValue;
        return -1;
      }
 
@@ -108,6 +113,26 @@ public class List_inArraySlots {
        (that is, increase the index associated with each).
       */
       public void add( int index, int value) {
+        int[] modified = new int[elements.length + 1];
+        for(int elemIndex = 0; elemIndex - 1 <= filledElements ; elemIndex++) {
+          //loop to fill in new ArrayList with new value at index given
+          if (filledElements == elements.length) expand();
+          if (elemIndex < index) //when the index is not reached yet
+            modified[elemIndex] = elements[elemIndex];
+          if (elemIndex == index) { //when index is reached
+            modified[elemIndex] = value;
+          }
+          if (elemIndex > index)//after index reached
+            modified[elemIndex] = elements[elemIndex-1];
+            //shifts the index over.
+        }
+        //printlines are for debugging
+        //System.out.println("Last element of original array is " + elements[filledElements -1]);
+        //System.out.println("Last element of new array is " + modified[filledElements]);
+        filledElements ++;
+        elements = modified;
+        //System.out.println("After elements = modified, last element is: " + elements[filledElements - 1]);
+
       }
 
 
@@ -120,6 +145,19 @@ public class List_inArraySlots {
        @return the value that was removed from the list
       */
       public int remove( int index) {
-        return -1;
+        //The idea is similar with the add(index, value) method
+        //except we skip a number instead of add a number.
+        int removed = elements[index];
+        int[] modified = new int[elements.length - 1];
+        for(int elemIndex = 0; elemIndex - 1 <= filledElements ; elemIndex++) {
+          if (elemIndex < index)
+            modified[elemIndex] = elements[elemIndex];
+          if (elemIndex >= index)
+            modified[elemIndex] = elements[elemIndex+1];
+
+        }
+        filledElements --;
+        elements = modified;
+        return removed;
       }
 }
